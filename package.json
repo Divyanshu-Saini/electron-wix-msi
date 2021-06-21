@@ -20,7 +20,8 @@
     "build": "tsc --pretty",
     "test": "npm run lint && jest",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "harness": "npm run build && node ./harness/harness.js"
+    "harness": "npm run build && node ./harness/harness.js",
+    "refreshVSToken": "vsts-npm-auth -config .npmrc"
   },
   "dependencies": {
     "debug": "^4.1.1",
