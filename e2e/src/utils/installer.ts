@@ -13,6 +13,21 @@ function isMSICreatorOptions(toBeDetermined: MSICreatorOptions | Options): toBeD
   return false;
 }
 
+// export interface InstallPaths {
+//   appRootFolder: string;
+//   appFolder: string;
+//   appExe: string;
+//   stubExe: string;
+//   updateExe: string;
+//   startMenuShortcut: string;
+//   desktopShortcut: string;
+//   appUserModelId: string;
+//   toastActivatorClsid: string;
+//   registryRunKey: string;
+//   registryUninstallKey: string;
+//   registryAutoUpdateKey: string;
+// }
+
 export interface InstallPaths {
   appRootFolder: string;
   appFolder: string;
@@ -20,7 +35,6 @@ export interface InstallPaths {
   stubExe: string;
   updateExe: string;
   startMenuShortcut: string;
-  desktopShortcut: string;
   appUserModelId: string;
   toastActivatorClsid: string;
   registryRunKey: string;
@@ -130,14 +144,28 @@ export const getInstallPaths = (options: MSICreatorOptions | SquirrelOptions,
 
   const startMenuRoot = path.join(installMode === 'perMachine' ? process.env.ProgramData! : process.env['APPDATA']!, 'Microsoft/Windows/Start Menu/Programs/');
   const home = installMode === 'perMachine' ? process.env.Public! : process.env['home']!;
-  return {
+  // return {
+  //   appRootFolder,
+  //   stubExe: path.join(appRootFolder, options.exe!),
+  //   updateExe: path.join(appRootFolder, 'Update.exe'),
+  //   appFolder: path.join(appRootFolder, `app-${options.version}`),
+  //   appExe: path.join(appRootFolder, `app-${options.version}`, options.exe!),
+  //   startMenuShortcut: isMSICreatorOptions(options) ?  path.join(startMenuRoot, `${options.shortcutFolderName || options.manufacturer}/${options.shortcutName || options.name}.lnk`) : '',
+  //   desktopShortcut: isMSICreatorOptions(options) ? path.join(home, `Desktop/${options.shortcutName || options.name}.lnk`) : '',
+  //   appUserModelId,
+  //   toastActivatorClsid,
+  //   registryRunKey,
+  //   registryUninstallKey,
+  //   registryAutoUpdateKey
+  // };
+
+    return {
     appRootFolder,
     stubExe: path.join(appRootFolder, options.exe!),
     updateExe: path.join(appRootFolder, 'Update.exe'),
     appFolder: path.join(appRootFolder, `app-${options.version}`),
     appExe: path.join(appRootFolder, `app-${options.version}`, options.exe!),
     startMenuShortcut: isMSICreatorOptions(options) ?  path.join(startMenuRoot, `${options.shortcutFolderName || options.manufacturer}/${options.shortcutName || options.name}.lnk`) : '',
-    desktopShortcut: isMSICreatorOptions(options) ? path.join(home, `Desktop/${options.shortcutName || options.name}.lnk`) : '',
     appUserModelId,
     toastActivatorClsid,
     registryRunKey,

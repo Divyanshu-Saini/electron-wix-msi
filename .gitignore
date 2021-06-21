@@ -1,5 +1,6 @@
 node_modules
 lib
+lib_nochange
 coverage
 harness/out*/*
 e2e/out*/*

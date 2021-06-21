@@ -288,6 +288,34 @@ export class MSICreator {
         this.getShortcutProperty(key, value)).join('\n'),
     };
 
+    // const replacements = {
+    //   '{{ApplicationBinary}}': this.exe,
+    //   '{{ApplicationDescription}}': this.description,
+    //   '{{ApplicationName}}': this.name,
+    //   '{{ApplicationShortcutGuid}}': uuid(),
+    //   '{{ApplicationShortName}}': this.shortName,
+    //   '{{AppUserModelId}}': this.appUserModelId,
+    //   '{{Language}}': this.language.toString(10),
+    //   '{{Manufacturer}}': this.manufacturer,
+    //   '{{ShortcutFolderName}}': this.shortcutFolderName,
+    //   '{{ShortcutName}}': this.shortcutName,
+    //   '{{UpgradeCode}}': this.upgradeCode,
+    //   '{{Version}}': this.windowsCompliantVersion,
+    //   '{{SemanticVersion}}': this.semanticVersion,
+    //   '{{Platform}}': this.arch,
+    //   '{{ProgramFilesFolder}}': this.arch === 'x86' ? 'ProgramFilesFolder' : 'ProgramFiles64Folder',
+    //   '{{ProcessorArchitecture}}' : this.arch,
+    //   '{{Win64YesNo}}' : this.arch === 'x86' ? 'no' : 'yes',
+    //   '{{DesktopShortcutGuid}}': uuid(),
+    //   '{{ConfigurableDirectory}}': enableChooseDirectory ? `ConfigurableDirectory="${ROOTDIR_NAME}"` : '',
+    //   '{{InstallPerUser}}': this.defaultInstallMode === 'perUser' ? '1' : '0',
+    //   '{{ProductCode}}': this.productCode,
+    //   '{{RandomGuid}}': uuid().toString(),
+    //   '{{RebootMode}}': this.rebootMode,
+    //   '{{InstallLevel}}': this.installLevel.toString(10),
+    //   '\r?\n.*{{remove newline}}': ''
+    // };
+
     const replacements = {
       '{{ApplicationBinary}}': this.exe,
       '{{ApplicationDescription}}': this.description,
@@ -306,7 +334,6 @@ export class MSICreator {
       '{{ProgramFilesFolder}}': this.arch === 'x86' ? 'ProgramFilesFolder' : 'ProgramFiles64Folder',
       '{{ProcessorArchitecture}}' : this.arch,
       '{{Win64YesNo}}' : this.arch === 'x86' ? 'no' : 'yes',
-      '{{DesktopShortcutGuid}}': uuid(),
       '{{ConfigurableDirectory}}': enableChooseDirectory ? `ConfigurableDirectory="${ROOTDIR_NAME}"` : '',
       '{{InstallPerUser}}': this.defaultInstallMode === 'perUser' ? '1' : '0',
       '{{ProductCode}}': this.productCode,

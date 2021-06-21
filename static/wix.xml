@@ -1,12 +1,18 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" 
      xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <!-- http://wixtoolset.org/documentation/manual/v3/xsd/wix/product.html -->
-  <Product Id="{{ProductCode}}" 
+  <!-- <Product Id="{{ProductCode}}" 
            UpgradeCode="{{UpgradeCode}}"
            Name = "{{ApplicationName}} (Machine - MSI)"
            Version="{{Version}}"
            Manufacturer="{{Manufacturer}}"
-           Language="{{Language}}">
+           Language="{{Language}}"> -->
+      <Product Id="{{ProductCode}}" 
+           UpgradeCode="{{UpgradeCode}}"
+           Name = "{{ApplicationName}}"
+           Version="{{Version}}"
+           Manufacturer="{{Manufacturer}}"
+           Language="{{Language}}">    
     <!-- Only run this installer on Windows 7 or up (or if it"s already installed, I guess) -->
     <!-- <Condition Message="This application is only supported on Windows 7 or higher.">
       <![CDATA[Installed OR (VersionNT >= 601)]]>
@@ -24,7 +30,8 @@
     <!-- While the MSI package is hidden in Apps & Features, it can still be queried
     via PowerShell and other means. To differentiate we give the public entry a slightly
     different name to make admins life easier.  -->
-    <Property Id="VisibleProductName" Value="{{ApplicationName}} (Machine)" />
+    <!-- <Property Id="VisibleProductName" Value="{{ApplicationName}} (Machine)" /> -->
+    <Property Id="VisibleProductName" Value="{{ApplicationName}}" />
     <!-- Signals Single Package Authoring. This pacakge can pe installed perMachine
     or perUser. The mode is determined by the property below. -->
     <Property Id="ALLUSERS" Secure="yes" Value="2" />
@@ -92,7 +99,7 @@
       </Directory>
 
       <!-- Desktop -->
-      <Directory Id="DesktopFolder" Name="Desktop" />
+      <!-- <Directory Id="DesktopFolder" Name="Desktop" /> -->
 
       <!-- Start Menu -->
       <Directory Id="ProgramMenuFolder">
@@ -121,7 +128,7 @@
     </DirectoryRef>
 
    <!-- Step 4: Add app desktop shortcut --> 
-    <DirectoryRef Id="DesktopFolder">
+    <!-- <DirectoryRef Id="DesktopFolder">
       <Component Id="DesktopShortcut" Guid="{{DesktopShortcutGuid}}" >
           <Shortcut Id="MyDesktopShortcut"
                     Name="{{ShortcutName}}"
@@ -135,7 +142,7 @@
                     Value="1"
                     KeyPath="yes" />
       </Component>
-    </DirectoryRef>
+    </DirectoryRef> -->
 
 <!-- {{AutoUpdatePermissions}} -->
 
@@ -153,7 +160,7 @@
       <Feature Id="MainApplication" Title="Main Application" Level="1" Description="The main components to run the applications." >
 <!-- {{ComponentRefs}} -->
         <ComponentRef Id="ApplicationShortcut" />
-        <ComponentRef Id="DesktopShortcut" />
+        <!-- <ComponentRef Id="DesktopShortcut" /> -->
         <ComponentRef Id="PurgeOnUninstall" />
       </Feature> 
 <!-- {{AutoLaunchFeature}} -->
